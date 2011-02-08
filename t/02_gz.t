@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More;
 use Capture::Tiny 'capture';
-use Digest::MD5;
 use File::Spec;
 use IO::Uncompress::Gunzip 'gunzip';
 
@@ -14,9 +13,19 @@ capture {
     system 'make', 'html5manifest';
 };
 
-my $md5 = Digest::MD5->new;
+ok(-f 'example.manifest.gz');
 
 gunzip('example.manifest.gz' => \my $manifest);
+
+unless ($manifest) {
+    require IO::Dir;
+    my $dir = IO::Dir->new('.');
+    warn "show current directory for debug";
+    while (defined(my $entry = $dir->read)) {
+        warn sprintf "# %s (%d bytes) ", $entry, -s $entry;
+    }
+}
+
 is($manifest, <<MANIFEST);
 CACHE MANIFEST
 
