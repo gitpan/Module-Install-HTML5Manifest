@@ -2,7 +2,7 @@ package Module::Install::HTML5Manifest;
 use strict;
 use warnings;
 use base qw(Module::Install::Base);
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 use Data::Dumper;
 use HTML5::Manifest;

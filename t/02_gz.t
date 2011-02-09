@@ -8,7 +8,7 @@ use IO::Uncompress::Gunzip 'gunzip';
 my $example = File::Spec->catfile('t', 'Zlib');
 chdir $example;
 
-capture {
+my($stdout, $stderr) = capture {
     system $^X, 'Makefile.PL';
     system 'make', 'html5manifest';
 };
@@ -20,6 +20,10 @@ gunzip('example.manifest.gz' => \my $manifest);
 unless ($manifest) {
     require IO::Dir;
     my $dir = IO::Dir->new('.');
+
+    warn "show stdout: \n$stdout\n";
+    warn "show stderr: \n$stderr\n";
+
     warn "show current directory for debug";
     while (defined(my $entry = $dir->read)) {
         warn sprintf "# %s (%d bytes) ", $entry, -s $entry;

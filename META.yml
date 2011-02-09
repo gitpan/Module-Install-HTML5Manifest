@@ -27,4 +27,4 @@ resources:
   homepage: http://github.com/yappo/p5-Module-Install-HTML5Manifest/tree
   license: http://dev.perl.org/licenses/
   repository: git://github.com/yappo/p5-Module-Install-HTML5Manifest.git
-version: 0.01_01
+version: 0.01_02

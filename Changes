@@ -1,5 +1,8 @@
 Revision history for Perl extension Module::Install::HTML5Manifest
 
+0.01_02 2011-02-09T20:55:28+09:00
+        - add debug message
+
 0.01_01 2011-02-08T14:22:18+09:00
         - add debug message for test
 
